@@ -72,6 +72,53 @@ void asteriscos(char** tablero, int cantMinas)
         }
     }
 }
+//punteros
+/*
+void ContnumMinas(char** tablero)
+{
+    for (char** fila = tablero; fila < tablero + 10; fila++)
+    {
+        for (char* col = *fila; col < *fila + 10; col++)
+        {
+            if (*col == '*')
+            {
+                continue;
+            }
+
+
+            int contador = 0;
+            int i = fila - tablero;
+            int j = col - *fila;
+
+            coord alrededor[8] =
+            {
+                {i - 1, j - 1}, {i - 1 , j}, {i - 1, j + 1},
+                {i, j - 1},  {i, j + 1},
+                {i + 1, j - 1},{i + 1, j},{i + 1, j + 1}
+            };
+
+            for (coord cActual : alrededor)
+            {
+                if (cActual.i >= 0 && cActual.i < 10 && cActual.j >= 0 && cActual.j < 10)
+                {
+                    if (*(*(tablero + cActual.i) + cActual.j) == '*')
+                        contador++;
+                }
+            }
+
+            if (contador > 0)
+            {
+                *(*(tablero + i) + j) = '0' + contador;
+            }
+            else
+            {
+                *(*(tablero + i) + j) = '0';
+            }
+        }
+    }
+}
+*/
+//Threads
 void contarMinasRango(char** tablero, int inicio, int fin)
 {
     for (int k = inicio; k < fin; k++)
@@ -168,7 +215,11 @@ int main()
     cout << "=== Pantalla 2: Con minas (*) ===" << endl;
     dibujarTablero(tablero);
 
-
+    /*
+    ContnumMinas(tablero);
+    cout << "=== Pantalla 3: Con numeros Punteros ===" << endl;
+    dibujarTablero(tablero);
+    */
     int totalCeldas = 10 * 10;
     int bloque = totalCeldas / 4;
 
@@ -182,11 +233,10 @@ int main()
     t3.join();
     t4.join();
 
-    cout << "=== Pantalla 3: Con numeros ===" << endl;
+    cout << "=== Pantalla 4: Con numeros - Threads ===" << endl;
     dibujarTablero(tablero);
 
     cout << "Cantidad de minas: " << contarMinas(tablero) << endl;
-
     for (int i = 0; i < 10; i++)
     {
         delete[] * (tablero + i);
