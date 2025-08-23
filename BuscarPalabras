@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+struct c
+{
+    int i;
+    int j;
+};
+void dibujarTablero(char** tablero)
+{
+    for (char** fila = tablero; fila < tablero + 10; fila++)
+    {
+        cout << "|";
+        for (char* col = *fila; col < *fila + 10; col++)
+        {
+            cout << " " << *col << " ";
+        }
+        cout << "|" << endl;
+    }
+    cout << endl;
+}
+
+bool horizontal(char** tablero)
+{
+    /*
+    int i;
+    int j;
+    c alrededor[8] =
+    {
+        {i - 1, j - 1}, {i - 1 , j}, {i - 1, j + 1},
+        {i, j - 1},  {i, j + 1},
+        {i + 1, j - 1},{i + 1, j},{i + 1, j + 1}
+    };
+    */
+    for (char** fila = tablero; fila < tablero + 10; fila++)
+    {
+        for (char* col = *fila; col < *fila + 10; col++)
+        {
+            int i = fila - tablero;
+            int j = col - *fila;
+
+            /*
+            c actual[2] = { {i, j + 1},{i+1, j+1} };
+            for (c r : actual)
+            {
+
+            }
+            */
+
+        }
+    }
+}
+int main()
+{
+    char tablero[10][10] = {
+        {'T','P','P','A','P','T','P', 'P','T'},
+        {'O','P','A','T','A','P','O','Z','O','J'},
+        {'S','A','T','A','T','O','T','A','Z','I'},
+        {'A', 'T','A','P','A','P','A','T','O','S'},
+        {'P','A','T','A','N','O', 'D','O','T','N'},
+        {'T','A','A','P','A','T','I','P','A','P'},
+        {'R','R','N','A','D','O','T','A','P','O'},
+        {'E','D','N','T','A','P','O','T', 'A','T'},
+        {'N','I','I','A','T','I','T','A','P','A'},
+        {'P','S','S','N','T','T','T','P','A','P'}
+    };
+
+    return 0;
+}
